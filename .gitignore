@@ -33,3 +33,8 @@ backend/dist/
 next-env.d.ts
 structure.txt
 trimmed-structure.txt
+
+# Local virtual environments and database
+.venv/
+.venv-1/
+backend/lpg_platform.db

@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+backend/venv/
+backend/__pycache__/
+
+# Node / frontend
+backend/node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.vercel/
+
+# Logs and environment
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+.env*
+
+# IDE / OS
+.DS_Store
+.vscode/
+*.swp
+
+# Build / generated
+*.tsbuildinfo
+next-env.d.ts
+structure.txt
+trimmed-structure.txt

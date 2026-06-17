@@ -27,6 +27,9 @@ pnpm-debug.log*
 
 # Build / generated
 *.tsbuildinfo
+dist/
+frontend/dist/
+backend/dist/
 next-env.d.ts
 structure.txt
 trimmed-structure.txt

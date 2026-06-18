@@ -1,7 +1,17 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import dynamic from "next/dynamic"; 
+import L from "leaflet";
+
+const icon = L.icon({
+  iconUrl: "/images/marker-icon.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41],
+});
 
 export default function SouthAfricaMap() {
   return (

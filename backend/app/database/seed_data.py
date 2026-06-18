@@ -19,52 +19,72 @@ def seed_db():
     """Populate database with initial data"""
     init_db()
     db = SessionLocal()
-    
+
     # Check if data already exists
     if db.query(Depot).first():
         print("Database already seeded")
         db.close()
         return
-    
+
     # Seed depots
     depots = [
         Depot(
-            name="Cape Town Depot",
-            province="Western Cape",
-            latitude=-33.9249,
-            longitude=18.4241,
-            current_stock=8500,
-            max_capacity=10000,
-            status="operational"
-        ),
-        Depot(
-            name="Durban Hub",
-            province="KwaZulu-Natal",
-            latitude=-29.8587,
-            longitude=31.0192,
-            current_stock=4200,
-            max_capacity=10000,
-            status="alert"
-        ),
-        Depot(
-            name="Johannesburg Terminal",
+            name="Benoni LPG Hub",
             province="Gauteng",
-            latitude=-26.2023,
-            longitude=28.0436,
-            current_stock=7100,
-            max_capacity=10000,
+            latitude=-26.188,
+            longitude=28.320,
+            current_stock=32000,
+            max_capacity=40000,
+            minimum_stock=10000,
+            daily_demand=1800,
+            supplier="RGC",
+            depot_type="Distribution",
             status="operational"
         ),
+
         Depot(
-            name="Port Elizabeth Station",
-            province="Eastern Cape",
-            latitude=-33.9669,
-            longitude=25.6007,
-            current_stock=3800,
-            max_capacity=10000,
-            status="maintenance"
+            name="Richards Bay LPG Hub",
+            province="KwaZulu-Natal",
+            latitude=-28.780,
+            longitude=32.040,
+            current_stock=42000,
+            max_capacity=50000,
+            minimum_stock=12000,
+            daily_demand=2500,
+            supplier="Import Terminal",
+            depot_type="Import",
+            status="operational"
         ),
+
+        Depot(
+            name="Venda Border LPG Hub",
+            province="Limpopo",
+            latitude=-22.950,
+            longitude=30.480,
+            current_stock=15000,
+            max_capacity=25000,
+            minimum_stock=5000,
+            daily_demand=1200,
+            supplier="RGC",
+            depot_type="Border",
+            status="operational"
+        ),
+
+        Depot(
+            name="Barberton LPG Hub",
+            province="Mpumalanga",
+            latitude=-25.790,
+            longitude=31.050,
+            current_stock=8000,
+            max_capacity=30000,
+            minimum_stock=7000,
+            daily_demand=1500,
+            supplier="Pipeline",
+            depot_type="Industrial",
+            status="alert"
+        )
     ]
+
     db.add_all(depots)
     db.commit()
     
@@ -102,3 +122,4 @@ def seed_db():
 
 if __name__ == "__main__":
     seed_db()
+

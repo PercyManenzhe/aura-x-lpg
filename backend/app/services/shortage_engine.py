@@ -74,3 +74,37 @@ class ShortageEngine:
         }
         self.shortage_log.append(event)
         return event
+       
+    def calculate_days_remaining(
+    self,
+    current_stock: float,
+    daily_demand: float
+       ):
+     if daily_demand <= 0:
+        return 999
+
+     return round(current_stock / daily_demand, 2)
+    
+    def risk_level(self, days_remaining: float):
+
+     if days_remaining < 5:
+        return "critical"
+
+     if days_remaining < 10:
+        return "warning"
+
+     return "safe"
+    
+
+     def recommend_action(
+        self,
+        days_remaining
+    ):
+
+        if days_remaining < 3:
+         return "Dispatch tanker immediately"
+
+        if days_remaining < 7:
+         return "Schedule replenishment"
+
+        return "Monitor"

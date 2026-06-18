@@ -9,7 +9,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Register routers (ONLY ONCE, AFTER app is created)
+# Register routers
 app.include_router(map_router, prefix="/map", tags=["Map"])
 app.include_router(depot_router, prefix="/depots", tags=["Depots"])
 
@@ -39,3 +39,31 @@ def live_feed():
         "pressure": round(random.uniform(10, 15), 2),
         "temperature": round(random.uniform(20, 35), 2)
     }
+
+
+@app.get("/alerts")
+def alerts():
+    return [
+        {
+            "id": 1,
+            "type": "Low Stock",
+            "description": "Benoni LPG Hub stock below threshold",
+            "status": "Pending",
+            "created_at": "2026-06-17 10:00:00"
+        },
+        {
+            "id": 2,
+            "type": "High Pressure",
+            "description": "Richards Bay tanker pressure above normal range",
+            "status": "Resolved",
+            "created_at": "2026-06-17 12:30:00"
+        },
+        {
+            "id": 3,
+            "type": "Temperature Alert",
+            "description": "Venda Border LPG Hub temperature exceeded limit",
+            "status": "Pending",
+            "created_at": "2026-06-17 15:45:00"
+        }
+    ]
+    
